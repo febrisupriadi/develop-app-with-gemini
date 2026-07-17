@@ -36,3 +36,45 @@ gcloud projects add-iam-policy-binding \({PROJECT_ID} --member user:\){USER} --r
 
 > **Catatan Troubleshoot:** Jika muncul pesan peringatan terkait *Regional Access Boundary* (`Gaia id not found`), pesan tersebut dapat diabaikan karena merupakan perilaku bawaan akun instan Qwiklabs. Izin IAM akan tetap sukses terpasang pada daftar kebijakan proyek.
 
+## Task 2: Create a Cloud Workstations Configuration and Instance
+
+Langkah-langkah ini digunakan untuk membuat klaster workstation, konfigurasi mesin, dan meluncurkan instans Cloud Workstation yang akan terintegrasi dengan Gemini Code Assist.
+
+### 1. Membuat Workstation Cluster
+Jalankan perintah berikut di Cloud Shell untuk membuat klaster workstation baru di wilayah yang telah ditentukan:
+
+```bash
+gcloud workstations clusters create my-cluster \
+    --region=\$REGION \
+    --project=\$PROJECT_ID
+```
+*(Proses pembuatan klaster ini biasanya memakan waktu beberapa menit. Tunggu hingga terminal selesai memproses).*
+
+### 2. Membuat Workstation Configuration
+Buat konfigurasi workstation yang menyertakan ekstensi Cloud Code secara bawaan agar fitur Gemini Code Assist langsung siap digunakan:
+
+```bash
+gcloud workstations configs create my-config \
+    --cluster=my-cluster \
+    --region=\$REGION \
+    --project=\$PROJECT_ID
+```
+
+### 3. Membuat Instans Cloud Workstation
+Setelah konfigurasi siap, buat instans workstation utama tempat Anda akan menulis kode aplikasi:
+
+```bash
+gcloud workstations create my-workstation \
+    --cluster=my-cluster \
+    --config=my-config \
+    --region=\$REGION \
+    --project=\$PROJECT_ID
+```
+
+### 4. Meluncurkan Workstation via Google Cloud Console
+1. Buka halaman **Cloud Workstations** di Google Cloud Console.
+2. Masuk ke menu **Workstations**.
+3. Klik nama workstation Anda (`my-workstation`), lalu klik **Start**.
+4. Setelah statusnya berubah menjadi *Running*, klik **Launch** untuk membuka IDE berbasis Code OSS (VS Code versi open-source) di tab browser baru.
+
+
