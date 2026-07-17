@@ -77,4 +77,19 @@ gcloud workstations create my-workstation \
 3. Klik nama workstation Anda (`my-workstation`), lalu klik **Start**.
 4. Setelah statusnya berubah menjadi *Running*, klik **Launch** untuk membuka IDE berbasis Code OSS (VS Code versi open-source) di tab browser baru.
 
+### 4. Membuat dan Menjalankan Workstation (via Cloud Console)
+
+Jika tidak menggunakan terminal, pembuatan instans workstation dapat dilakukan secara visual melalui antarmuka Google Cloud Console dengan langkah berikut:
+
+1. Pada panel Navigasi kiri di Cloud Console, cari dan klik menu **Workstations**.
+2. Klik tombol **Create Workstation** di bagian atas halaman.
+3. Isikan nilai properti berikut pada formulir yang tersedia:
+   * **ID:** `my-workstation`
+   * **Configuration:** Pilih `my-config` (konfigurasi yang telah dibuat sebelumnya)
+4. Klik tombol **Create** di bagian bawah.
+5. Setelah berhasil dibuat, instans akan muncul di bawah daftar *My workstations* dengan status **Stopped**.
+6. Untuk menyalakannya, klik tombol **Start**. Status akan berubah menjadi *Starting*.
+7. Tunggu beberapa menit hingga status berubah menjadi **Running**, yang menandakan bahwa lingkungan kerja IDE Anda telah siap digunakan.
+
+
 
