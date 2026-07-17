@@ -23,7 +23,7 @@ echo "USER=\${USER}"
 Aktifkan API untuk layanan Gemini dengan perintah berikut:
 
 ```bash
-gcloud services enable ://googleapis.com --project \${PROJECT_ID}
+gcloud services enable cloudaicompanion.googleapis.com --project ${PROJECT_ID}
 ```
 
 ### 3. Konfigurasi IAM Roles (Izin Akses Gemini)
